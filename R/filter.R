@@ -7,10 +7,10 @@
 #' @keywords hugene, microarrays
 #' @export
 #' @examples
-#' filter()
+#' filterc()
 
 #filtering of genes, removing all control probes and seeing what is filtered 
-filter <- function(normData){
+filterc <- function(normData){
   
 con <- db(pd.hugene.2.0.st)
 
