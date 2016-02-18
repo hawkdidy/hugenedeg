@@ -1,7 +1,8 @@
 #' A Function to filter genes
 #'
 #' This function will filter out genes that don't change throughout the time points
-#' it will also filter out the coontrol probs
+#' it will also filter out the control probs. It will return the number of features
+#' filtered.
 #' 
 #' @param normData The normalized data.
 #' @keywords hugene, microarrays
@@ -20,5 +21,7 @@ probes.control <- dbGetQuery(con, "select fsetid from featureSet where
 normData.filtered <- nsFilter(normData, require.entrez=FALSE, remove.dupEntrez=FALSE, feature.exclude = probes.control)
 
 return(normData.filtered$filter.log)
+
+assign("normData",normData.filtered, envir = .GlobalEnv)
 
 }
