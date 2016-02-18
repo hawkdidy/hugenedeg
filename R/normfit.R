@@ -26,7 +26,7 @@ colnames(design) <- c("I","T1","T2","T3", "T4")
 contrast <- makeContrasts( "I-T1","T1-T2","T2-T3","T3-T4",
                            levels= design )
 
-normfit <-eBayes( contrasts.fit( lmFit(normData.filtered$eset, design), contrast) )
+normfit <-eBayes( contrasts.fit( lmFit(normData$eset, design), contrast) )
 
 assign("normfit",normfit, envir = .GlobalEnv)
 
