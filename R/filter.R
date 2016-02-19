@@ -15,7 +15,7 @@ filterc <- function(normData){
   
 eset <- getMainProbes(normData)
 
-normData.filtered <- nsFilter(eset, require.entrez=FALSE, remove.dupEntrez=FALSE, feature.exclude = probes.control)
+normData.filtered <- nsFilter(eset, require.entrez=FALSE, remove.dupEntrez=FALSE)
 
 return(normData.filtered$filter.log)
 
