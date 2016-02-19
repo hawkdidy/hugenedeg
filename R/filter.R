@@ -13,7 +13,7 @@
 #filtering of genes, removing all control probes and seeing what is filtered 
 filterc <- function(normData){
   
-eset <- getMainProbes(eset)
+eset <- getMainProbes(normData)
 
 normData.filtered <- nsFilter(eset, require.entrez=FALSE, remove.dupEntrez=FALSE, feature.exclude = probes.control)
 
