@@ -23,8 +23,6 @@ filterc(normData)
 
 normfit(normData, group, design, contrast)
 
-return(normData.filtered$filter.log)
-
 assign("normfit",normfit, envir = .GlobalEnv)
 
 results(normfit)
