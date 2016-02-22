@@ -4,17 +4,30 @@
 \alias{normfit}
 \title{A function that returns your DEG in the form of nromfit}
 \usage{
-normfit(normData)
+normfit(normData, group, design, contrast)
 }
 \arguments{
 \item{normData}{Normalized data.}
+
+\item{group}{Data grouping.}
+
+\item{design}{Design matrix.}
+
+\item{contrast}{Contrast matrix}
 }
 \description{
 Then it will fit a linear models to determine the mean values of your genes
 and use ebayes to shrink the variance
 }
 \examples{
-normfit()
+group <- factor(c((rep.int(0,13)),rep.int(1,14),rep.int(2,14)
+,rep.int(3,14),rep.int(4,14)))
+
+design <- model.matrix(~ 0 + group)
+colnames(design) <- c("I","T1","T2","T3", "T4")
+contrast <- makeContrasts( "I-T1","T1-T2","T2-T3","T3-T4",
+                          levels= design )
+normfit(normData, group, design, contrast)
 }
 \keyword{hugene,}
 \keyword{microarrays}

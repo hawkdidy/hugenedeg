@@ -22,13 +22,6 @@ It will return three global variables. raWData which is the unnormalized gene ex
 normData which are the log2 normalized gene expression values. Results which is the results of the analysis.
 }
 \examples{
-group <- factor(c((rep.int(0,13)),rep.int(1,14),rep.int(2,14)
-rep.int(3,14),rep.int(4,14)))
-design <- model.matrix(~ 0 + group)
-colnames(design) <- c("I","T1","T2","T3", "T4")
-contrast matrix 
-contrast <- makeContrasts( "I-T1","T1-T2","T2-T3","T3-T4",
-                          levels= design )
 
 coman(mydir, group, design, contrast)
 }

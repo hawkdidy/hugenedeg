@@ -5,26 +5,22 @@
 #' 
 #' 
 #' @param normData Normalized data.
+#' @param group Data grouping.
+#' @param design Design matrix.
+#' @param contrast Contrast matrix
 #' @keywords hugene, microarrays
 #' @export
 #' @examples
-#' normfit()
+#' group <- factor(c((rep.int(0,13)),rep.int(1,14),rep.int(2,14)
+#',rep.int(3,14),rep.int(4,14)))
+#'
+#'design <- model.matrix(~ 0 + group)
+#'colnames(design) <- c("I","T1","T2","T3", "T4")
+#'contrast <- makeContrasts( "I-T1","T1-T2","T2-T3","T3-T4",
+#'                           levels= design )
+#' normfit(normData, group, design, contrast)
 
-
-
-
-normfit<- function(normData){
-
-#Creating a design matrix based on the experiment and then a linear model for estimating mean expression values 
-#bayes for shrinking the ste and getting DEGS
-group <- factor(c((rep.int(0,13)),rep.int(1,14),rep.int(2,14)
-                  ,rep.int(3,14),rep.int(4,14)))
-
-design <- model.matrix(~ 0 + group)
-colnames(design) <- c("I","T1","T2","T3", "T4")
-#contrast matrix 
-contrast <- makeContrasts( "I-T1","T1-T2","T2-T3","T3-T4",
-                           levels= design )
+normfit<- function(normData, group, design, contrast){
 
 normfit <-eBayes( contrasts.fit( lmFit(normData$eset, design), contrast) )
 
