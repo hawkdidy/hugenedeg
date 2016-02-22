@@ -12,7 +12,7 @@ Depends:
     genefilter (<= 1.52.1),
     annotate (<= 1.48.0),
     hugene20sttranscriptcluster.db(<= 8.4.0),
-    affycoretools (<= 1.42.0)
+    affycoretools(<= 1.42.0)
 License: GNU GENERAL PUBLIC LICENSE V3.0
 LazyData: true
 RoxygenNote: 5.0.1.9000
