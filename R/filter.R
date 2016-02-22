@@ -15,10 +15,11 @@ filterc <- function(normData){
   
 eset <- getMainProbes(normData)
 
-return(normData<- nsFilter(eset, require.entrez=FALSE, remove.dupEntrez=FALSE))
+normData.filtered <- nsFilter(eset, require.entrez=FALSE, remove.dupEntrez=FALSE)
 
-return(normData$filter.log)
+return(normData.filtered$filter.log)
 
+assign("normData",normData.filtered, envir = .GlobalEnv)
 
 }
 

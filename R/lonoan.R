@@ -15,11 +15,14 @@ lonoan <- function(mydir){
 #listing the files from directory using special CEL file read function
 celList <- list.celfiles(mydir, full.names=TRUE)
 #reading data from cellist and setting annotation package to approiate one for this microarray
-return(rawData <- read.celfiles(celList, pkgname='pd.hugene.2.0.st'))
+rawData <- read.celfiles(celList, pkgname='pd.hugene.2.0.st')
 #normalizing the data using RMA algorithm
-return(normData <- rma(rawData, target="core"))
+normData <- rma(rawData, target="core")
 #retreaving feature data
 featureData(normData) <- getNetAffx(normData, "transcript")
+
+assign("rawData", rawData, envir = .GlobalEnv)
+assign("normData",normData, envir = .GlobalEnv)
 
 
 }
