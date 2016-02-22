@@ -24,8 +24,6 @@ normfit<- function(normData, group, design, contrast){
 
 eset <- exprs(normData)
 
-normfit <-eBayes( contrasts.fit( lmFit(eset, design), contrast) )
-
-assign("normfit",normfit, envir = .GlobalEnv)
+return(normfit <-eBayes( contrasts.fit( lmFit(eset, design), contrast) ))
 
 }
